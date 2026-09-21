@@ -75,7 +75,7 @@ impl Sink {
                     if let Some(key) = s.encrypt.as_mut() {
                         bytes = key.enc(&bytes);
                     }
-                    allow_err!(s.sink.send(tungstenite::Message::Binary(bytes)).await)
+                    allow_err!(s.sink.send(tungstenite::Message::Binary(bytes.into())).await)
                 }
                 Sink::Tss(s) => {
                     if let Some(key) = s.encrypt.as_mut() {
@@ -1622,6 +1622,7 @@ async fn test_hbbs(addr: SocketAddr) -> ResultType<()> {
 }
 
 #[inline]
+#[allow(dead_code)]
 async fn send_rk_res(
     socket: &mut FramedSocket,
     addr: SocketAddr,

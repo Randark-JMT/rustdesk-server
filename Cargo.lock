@@ -1663,10 +1663,10 @@ dependencies = [
  "tokio-native-tls",
  "tokio-rustls 0.26.1",
  "tokio-socks 0.5.2-1",
- "tokio-tungstenite 0.26.2",
+ "tokio-tungstenite",
  "tokio-util",
  "toml 0.7.8",
- "tungstenite 0.26.2",
+ "tungstenite",
  "url",
  "users",
  "uuid",
@@ -1713,9 +1713,9 @@ dependencies = [
  "serde_json",
  "sodiumoxide",
  "sqlx",
- "tokio-tungstenite 0.17.1",
+ "tokio-tungstenite",
  "tower-http",
- "tungstenite 0.17.2",
+ "tungstenite",
  "uuid",
  "whoami",
 ]
@@ -4468,18 +4468,6 @@ dependencies = [
 
 [[package]]
 name = "tokio-tungstenite"
-version = "0.17.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "06cda1232a49558c46f8a504d5b93101d42c0bf7f911f12a105ba48168f821ae"
-dependencies = [
- "futures-util",
- "log",
- "tokio",
- "tungstenite 0.17.2",
-]
-
-[[package]]
-name = "tokio-tungstenite"
 version = "0.26.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7a9daff607c6d2bf6c16fd681ccb7eecc83e4e2cdc1ca067ffaadfca5de7f084"
@@ -4493,7 +4481,7 @@ dependencies = [
  "tokio",
  "tokio-native-tls",
  "tokio-rustls 0.26.1",
- "tungstenite 0.26.2",
+ "tungstenite",
  "webpki-roots 0.26.7",
 ]
 
@@ -4649,25 +4637,6 @@ name = "try-lock"
 version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "59547bce71d9c38b83d9c0e92b6066c4253371f15005def0c30d9657f50c7642"
-
-[[package]]
-name = "tungstenite"
-version = "0.17.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d96a2dea40e7570482f28eb57afbe42d97551905da6a9400acc5c328d24004f5"
-dependencies = [
- "base64 0.13.0",
- "byteorder",
- "bytes",
- "http 0.2.7",
- "httparse",
- "log",
- "rand 0.8.5",
- "sha-1",
- "thiserror 1.0.31",
- "url",
- "utf-8",
-]
 
 [[package]]
 name = "tungstenite"
