@@ -46,6 +46,8 @@ in the inherited process environment.
 | *(config file)* | `-c`, `--config` | *(none)* | Path to an extra INI config file (see precedence above). |
 | `TEST_HBBS` 🅴 | *(none)* | *(auto)* | UDP self‑test target checked at start‑up. Set to `no` to skip the check (useful behind some NATs/proxies), or to an explicit `host:port`. |
 | `ALWAYS_USE_RELAY` 🅴 | *(none)* | `N` | `Y` forces every session through a relay (disables direct/hole‑punched connections). At runtime, send `always-use-relay Y` or `always-use-relay N` to the `hbbs` [loopback console](#runtime-console). |
+| `MUST_LOGIN` 🅴 | `--must-login=[Y\|N]` | `N` | `Y` rejects punch‑hole requests that do not carry a login token (`Connection failed, please login!`). At runtime, send `must-login Y` or `must-login N` to the `hbbs` [loopback console](#runtime-console). |
+| `RUSTDESK_API_JWT_KEY` 🅴 | *(none)* | *(empty)* | When set together with `MUST_LOGIN=Y`, the login token is validated as a JWT (HS256) signed with this key, as issued by [rustdesk-api](https://github.com/lejianwen/rustdesk-api). Invalid/expired tokens are rejected with `Token error, please log out and log back in!`. When empty, any non‑empty token is accepted. |
 | `DB_URL` 🅴 | *(none)* | `./db_v2.sqlite3` | Path/URL of the SQLite database file. See [Database](#database). |
 | `MAX_DATABASE_CONNECTIONS` 🅴 | *(none)* | `1` | Size of the SQLite connection pool. |
 
@@ -108,6 +110,9 @@ connection from a loopback address is treated as a single console command:
 ```bash
 # hbbs: toggle forced relay on PORT-1 (21115 by default)
 printf 'always-use-relay Y' | nc 127.0.0.1 21115
+
+# hbbs: toggle the login requirement (see MUST_LOGIN)
+printf 'must-login Y' | nc 127.0.0.1 21115
 
 # hbbr: list commands on its relay PORT (21117 by default)
 printf 'h' | nc 127.0.0.1 21117
